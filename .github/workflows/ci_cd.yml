@@ -1,10 +1,13 @@
-name: Test&Deploy
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: ci_cd
 
 on:
-  pull_request:
-    branches: [ master ]
   push:
-    branches: [ master ]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
@@ -25,6 +28,7 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
           pytest
+          
   build-publish:
     needs: test
     if: github.event_name == 'push'
@@ -41,6 +45,5 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
-          password: ${{secrets.PYPI_API_TOKEN}}
-
-
+          password: ${{ secrets.MY_SECRET_TOKEN }}
+          
