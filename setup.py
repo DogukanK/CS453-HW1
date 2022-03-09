@@ -4,7 +4,7 @@ setup(
     # TODO: Write a globally unique name which will be listed on PyPI
     name="CS453-HW1-Dogukan",
     author="Doğukan Ertunga Kurnaz",  # TODO: Write your name
-    version="2.0.0",
+    version="3.0.0",
     packages=["dictionary"],
     install_requires=[
         "requests>=2.23.0",
